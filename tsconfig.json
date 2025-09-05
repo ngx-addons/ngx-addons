@@ -14,7 +14,13 @@
       ],
       "@ngx-addons/omni-auth-ui-material": [
         "./dist/omni-auth-ui-material",
-        "./projects/omni-auth-ui-material/src/public-api.ts",
+        "./projects/omni-auth-ui-material/src/public-api.ts"
+      ],
+      "@ng-doc/generated": [
+        "./ng-doc/docs/index.ts"
+      ],
+      "@ng-doc/generated/*": [
+        "./ng-doc/docs/*"
       ]
     },
     "strict": true,
@@ -27,7 +33,7 @@
     "experimentalDecorators": true,
     "importHelpers": true,
     "target": "ES2022",
-    "module": "preserve",
+    "module": "preserve"
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,
@@ -61,6 +67,12 @@
     },
     {
       "path": "./projects/demo/tsconfig.spec.json"
+    },
+    {
+      "path": "./projects/docs/tsconfig.app.json"
+    },
+    {
+      "path": "./projects/docs/tsconfig.spec.json"
     }
   ]
 }

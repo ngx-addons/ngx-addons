@@ -1,0 +1,52 @@
+.brand {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &-logo {
+    margin-right: 8px;
+  }
+
+  &-title-ngx {
+    font-family: var(--ng-doc-font-family), serif;
+    font-weight: 400;
+  }
+
+  &-title-omni-auth {
+    font-family: var(--ng-doc-heading-font-family), serif;
+    font-weight: 700;
+  }
+
+}
+
+
+.header-controls {
+  display: flex;
+  margin-left: calc(var(--ng-doc-base-gutter) * 2);
+  gap: calc(var(--ng-doc-base-gutter) * 2);
+}
+
+@media screen and (max-width: 600px) {
+  .header-controls {
+    gap: calc(var(--ng-doc-base-gutter));
+  }
+}
+
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: calc(var(--ng-doc-base-gutter) * 3);
+  color: var(--ng-doc-text-muted);
+  font-size: 12px;
+  gap: 8px;
+
+  a {
+    text-decoration: none;
+    color: var(--ng-doc-link-color);
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}

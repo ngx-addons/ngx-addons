@@ -1,0 +1,55 @@
+@use "@angular/material" as mat;
+
+.material-demo {
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  --border-radius: 8px;
+  color-scheme: light;
+
+  &.dark {
+    color-scheme: dark;
+  }
+
+  &.auto {
+    color-scheme: light dark
+  }
+
+  &.blue {
+    @include mat.theme(
+        (
+          color: mat.$blue-palette,
+          typography: Roboto,
+          density: 0,
+        )
+    );
+  }
+
+  &.azure {
+    @include mat.theme(
+        (
+          color: mat.$azure-palette,
+          typography: Roboto,
+          density: 0,
+        )
+    );
+  }
+
+  &.green {
+    @include mat.theme(
+        (
+          color: mat.$green-palette,
+          typography: Roboto,
+          density: 0,
+        )
+    );
+  }
+
+  &.orange {
+    @include mat.theme(
+        (
+          color: mat.$orange-palette,
+          typography: Roboto,
+          density: 0,
+        )
+    );
+  }
+}

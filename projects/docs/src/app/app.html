@@ -1,0 +1,19 @@
+<ng-doc-root [footerContent]="footerContent">
+  <ng-doc-navbar>
+    <h3 class="brand" ngDocNavbarLeft>
+      <img alt="Logo" class="brand-logo" height="28" ngSrc="/logo.png" width="28"/>
+      <span class="brand-title-ngx">Ngx</span>
+      <span class="brand-title-omni-auth">OmniAuth</span>
+    </h3>
+    <div @preventInitialChild class="header-controls" ngDocNavbarRight>
+      <ng-doc-theme-toggle/>
+    </div>
+  </ng-doc-navbar>
+  <ng-doc-sidebar/>
+  <router-outlet/>
+  <ng-template #footerContent>
+    <div class="footer">
+      <a href="https://github.com/ngx-addons/ngx-addons/blob/main/LICENSE.md" target="_blank">MIT © 2025</a> Piotr Liszka
+    </div>
+  </ng-template>
+</ng-doc-root>
