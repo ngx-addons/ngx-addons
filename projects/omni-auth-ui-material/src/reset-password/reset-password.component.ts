@@ -53,7 +53,7 @@ export class ResetPasswordComponent {
 
   readonly resending = signal(false);
   readonly processing = signal(false);
-  emailSent = false;
+  readonly emailSent = signal(false);
 
   async sendEmail() {
     const identifier = this.user.identifier ?? this.authRoute.currentIdentifier();
@@ -71,7 +71,7 @@ export class ResetPasswordComponent {
     this.resending.set(false);
 
     if (!hasError) {
-      this.emailSent = true;
+      this.emailSent.set(true);
     }
   }
 
