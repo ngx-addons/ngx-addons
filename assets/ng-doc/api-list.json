@@ -203,14 +203,24 @@
     "title": "OmniAuthUiMaterial",
     "items": [
       {
+        "route": "/api/type-aliases/omni-auth-ui-material/AuthUiConfig",
+        "type": "TypeAlias",
+        "name": "AuthUiConfig"
+      },
+      {
+        "route": "/api/variables/omni-auth-ui-material/AUTH_UI_CONFIG",
+        "type": "Variable",
+        "name": "AUTH_UI_CONFIG"
+      },
+      {
+        "route": "/api/variables/omni-auth-ui-material/configureAuthUi",
+        "type": "Variable",
+        "name": "configureAuthUi"
+      },
+      {
         "route": "/api/type-aliases/omni-auth-ui-material/AttributeFieldConfig",
         "type": "TypeAlias",
         "name": "AttributeFieldConfig"
-      },
-      {
-        "route": "/api/type-aliases/omni-auth-ui-material/AuthComponentConfig",
-        "type": "TypeAlias",
-        "name": "AuthComponentConfig"
       },
       {
         "route": "/api/classes/omni-auth-ui-material/AuthComponent",
@@ -286,6 +296,11 @@
         "route": "/api/classes/omni-auth-ui-material/HostStateMatcher",
         "type": "Class",
         "name": "HostStateMatcher"
+      },
+      {
+        "route": "/api/variables/omni-auth-ui-material/OMNI_AUTH_ICON_COMPONENT",
+        "type": "Variable",
+        "name": "OMNI_AUTH_ICON_COMPONENT"
       },
       {
         "route": "/api/classes/omni-auth-ui-material/MapToNativeInputTypePipe",
