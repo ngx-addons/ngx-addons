@@ -90,12 +90,12 @@ describe('isError', () => {
   });
 
   it('should return false when response is null', () => {
-    expect(isError(null as unknown)).toBe(false);
+    expect(isError(null as any)).toBe(false);
   });
 
   it('should return false when response is not an OmniAuthError instance', () => {
     const regularError = new Error('Regular error');
 
-    expect(isError(regularError as unknown)).toBe(false);
+    expect(isError(regularError as any)).toBe(false);
   });
 });
