@@ -1,5 +1,5 @@
 import {ChangeDetectionStrategy, Component, computed, inject, input, OnInit, ViewEncapsulation,} from '@angular/core';
-import {AuthComponent, AuthComponentConfig,} from '@ngx-addons/omni-auth-ui-material';
+import {AuthComponent, configureAuthUi,} from '@ngx-addons/omni-auth-ui-material';
 import {NgDocThemeService} from '@ng-doc/app/services/theme';
 import {toSignal} from '@angular/core/rxjs-interop';
 import {MatIconRegistry} from '@angular/material/icon';
@@ -15,7 +15,7 @@ import {environment} from '../../environments/environment';
       class="material-demo mat-typography"
       [class]="[theme(), currentTheme()]"
     >
-      <omni-auth-ui-mat [config]="config()">
+      <omni-auth-ui-mat>
         <p sign-up-footer>
           By signing up, you agree to our
           <a class="link" tabindex="0">terms and conditions</a>
@@ -42,6 +42,42 @@ import {environment} from '../../environments/environment';
         },
       },
     }),
+    configureAuthUi({
+      signIn: {
+        signInProviders: [
+          {
+            label: 'Continue with Google',
+            tooltip: 'This feature is not enabled in demo',
+            key: 'google',
+            fullWidth: true,
+          },
+          {
+            label: 'Continue with Facebook',
+            tooltip: 'This feature is not enabled in demo',
+            key: 'facebook',
+            fullWidth: true,
+          },
+          {
+            label: 'Continue with Apple',
+            tooltip: 'This feature is not enabled in demo',
+            key: 'apple',
+            fullWidth: true,
+          },
+          {
+            label: 'Continue with Microsoft',
+            tooltip: 'This feature is not enabled in demo',
+            key: 'github',
+            fullWidth: true,
+          },
+          {
+            label: 'Continue with Custom Provider',
+            tooltip: 'This feature is not enabled in demo',
+            key: 'custom',
+            fullWidth: true,
+          },
+        ],
+      },
+    }),
   ]
 })
 export class CognitoWithMaterialProvidersComponent implements OnInit {
@@ -51,12 +87,6 @@ export class CognitoWithMaterialProvidersComponent implements OnInit {
   readonly theme = input<'blue' | 'azure' | 'green' | 'orange' | 'magenta'>(
     'azure',
   );
-  readonly providersWithLabels = input<boolean>(true);
-  readonly google = input<boolean>(true);
-  readonly custom = input<boolean>(true);
-  readonly github = input<boolean>(true);
-  readonly facebook = input<boolean>(true);
-  readonly apple = input<boolean>(true);
 
   readonly change = toSignal(this.themeService.themeChanges());
   readonly currentTheme = computed(() => {
@@ -67,56 +97,6 @@ export class CognitoWithMaterialProvidersComponent implements OnInit {
     }
 
     return this.themeService.currentTheme as 'auto' | 'dark';
-  });
-
-  readonly config = computed(() => {
-    const labels = this.providersWithLabels();
-    const google = this.google();
-    const facebook = this.facebook();
-    const apple = this.apple();
-    const github = this.github();
-    const custom = this.custom();
-    const fullWidth = labels;
-    const tooltip = 'This feature is not enabled in demo';
-
-    const config: AuthComponentConfig = {
-      signIn: {
-        signInProviders: [
-          google ? {
-            label: labels ? 'Continue with Google' : undefined,
-            tooltip,
-            key: 'google',
-            fullWidth: fullWidth,
-          } : undefined,
-          facebook ? {
-            label: labels ? 'Continue with Facebook' : undefined,
-            tooltip,
-            key: 'facebook',
-            fullWidth: fullWidth,
-          } : undefined,
-          apple ? {
-            label: labels ? 'Continue with Apple' : undefined,
-            tooltip,
-            key: 'apple',
-            fullWidth: fullWidth,
-          } : undefined,
-          github ? {
-            label: labels ? 'Continue with Microsoft' : undefined,
-            tooltip,
-            key: 'github',
-            fullWidth: fullWidth,
-          } : undefined,
-          custom ? {
-            label: labels ? 'Continue with Custom Provider' : undefined,
-            tooltip,
-            key: 'custom',
-            fullWidth: fullWidth,
-          } : undefined,
-        ].filter(item => !!item)
-      },
-      signUp: {},
-    };
-    return config;
   });
 
   ngOnInit(): void {

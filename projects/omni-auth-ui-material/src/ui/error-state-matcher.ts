@@ -2,13 +2,17 @@ import { ErrorStateMatcher } from '@angular/material/core';
 import { FormControl, NgControl } from '@angular/forms';
 
 export class HostStateMatcher implements ErrorStateMatcher {
-  constructor(private parentFormControl: FormControl) {}
+  readonly #parentFormControl: FormControl;
+
+  constructor(parentFormControl: FormControl) {
+    this.#parentFormControl = parentFormControl;
+  }
 
   isErrorState(): boolean {
     return (
-      this.parentFormControl &&
-      this.parentFormControl.invalid &&
-      (this.parentFormControl.dirty || this.parentFormControl.touched)
+      this.#parentFormControl &&
+      this.#parentFormControl.invalid &&
+      (this.#parentFormControl.dirty || this.#parentFormControl.touched)
     );
   }
 

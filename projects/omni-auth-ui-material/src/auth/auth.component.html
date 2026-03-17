@@ -8,7 +8,7 @@
   @if (authService.authState.value(); as user) {
     @switch (user.state) {
       @case ('authenticated') {
-        @if (config()?.hideAuthenticatedContent !== true) {
+        @if (uiConfig?.hideAuthenticatedContent !== true) {
           <omni-auth-ui-mat-authenticated [content]="content()"/>
         }
         <ng-content select="[auth-user-is-authenticated]"/>
@@ -36,14 +36,14 @@
             >
               <mat-tab [label]="content().signIn.title">
                 <ng-template matTabContent>
-                  <omni-auth-ui-mat-signin [config]="config()?.signIn" [content]="content()">
+                  <omni-auth-ui-mat-signin [content]="content()">
                     <ng-content sign-in-footer select="[sign-in-footer]"/>
                   </omni-auth-ui-mat-signin>
                 </ng-template>
               </mat-tab>
 
               <mat-tab [label]="content().signUp.title">
-                <omni-auth-ui-mat-signup [config]="config()?.signUp" [content]="content()">
+                <omni-auth-ui-mat-signup [content]="content()">
                   <ng-content sign-up-footer select="[sign-up-footer]"/>
                 </omni-auth-ui-mat-signup>
               </mat-tab>

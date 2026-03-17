@@ -4,11 +4,11 @@
   pointer-events: none;
 }
 .button {
-  &.icon-only mat-icon {
+  &.icon-only .icon {
     margin: 0;
   }
   &:not(.icon-only) {
-    mat-icon {
+    .icon {
       margin: 0 8px 0 0;
     }
   }

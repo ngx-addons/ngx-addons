@@ -357,12 +357,18 @@ export class AuthSupabaseService extends OmniAuthService {
     }
   }
 
-  async confirmForgotPassword(params: {
+  async confirmForgotPassword(_params: {
     identifier: string;
     code: string;
     newPassword: string;
   }): Promise<void | FlowError> {
-    return this.#handleError(new FlowError('confirmForgotPassword', 'unknown', 'Supabase uses link-based password recovery. Use changePassword after the user clicks the recovery link.'));
+    return this.#handleError(
+      new FlowError(
+        'confirmForgotPassword',
+        'unknown',
+        'Supabase uses link-based password recovery. Use changePassword after the user clicks the recovery link.',
+      ),
+    );
   }
 
   async signInWithProvider(

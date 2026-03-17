@@ -28,7 +28,7 @@ export class AuthRouteService {
     this.currentIdentifier.set(details.identifier ?? null);
   }
 
-  navigateToGuestPage(rememberPage = false) {
+  navigateToGuestPage(_rememberPage = false) {
     // todo - implement rememberPage logic
     if (!this.#env.routing?.guest) {
       return;

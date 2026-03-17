@@ -20,21 +20,23 @@ export class LoaderOverlayDirective {
   readonly loading = input(false);
   #spinner?: ComponentRef<MatProgressSpinner>;
 
+  constructor() {
+    effect(() => {
+      const isLoading = this.loading();
+
+      if (isLoading) {
+        this.#nativeElement.classList.add('mat-loading');
+        this.#createSpinner();
+      } else {
+        this.#nativeElement.classList.remove('mat-loading');
+        this.#destroySpinner();
+      }
+    });
+  }
+
   get #nativeElement(): HTMLElement {
     return this.#hostElement.nativeElement;
   }
-
-  #toggleOverlay = effect(() => {
-    const isLoading = this.loading();
-
-    if (isLoading) {
-      this.#nativeElement.classList.add('mat-loading');
-      this.#createSpinner();
-    } else {
-      this.#nativeElement.classList.remove('mat-loading');
-      this.#destroySpinner();
-    }
-  })
 
   #createSpinner(): void {
     if (this.#spinner) {

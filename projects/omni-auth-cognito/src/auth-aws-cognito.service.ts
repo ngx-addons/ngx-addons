@@ -84,6 +84,7 @@ export class AuthAwsCognitoService extends OmniAuthService {
   }
 
   #hubListenerCancelToken = () => {
+    // noop: replaced when startListening() is called
   };
 
   startListening() {
@@ -289,7 +290,7 @@ export class AuthAwsCognitoService extends OmniAuthService {
           throw new RuntimeError('Unexpected next step: ' + nextStep);
       }
 
-    } catch (error: Error | any) {
+    } catch (error: unknown) {
       return this.#handleError(this.#transformError('confirmSignIn', error));
     }
   }
@@ -322,10 +323,10 @@ export class AuthAwsCognitoService extends OmniAuthService {
         default:
           throw new RuntimeError('Unexpected next step: ' + nextStep);
       }
-    } catch (error: Error | any) {
+    } catch (error: unknown) {
       if (
-        'message' in error &&
-        error.message ===
+        'message' in (error as Record<string, unknown>) &&
+        (error as Record<string, unknown>)['message'] ===
         'User cannot be confirmed. Current status is CONFIRMED'
       ) {
         this.#authRouteService.nextStep('login', {identifier: params.identifier});

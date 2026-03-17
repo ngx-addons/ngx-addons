@@ -7,7 +7,7 @@ import {
 import {OmniAuthError} from './error/auth-error';
 import {TokenProxy} from './token/token-proxy';
 import {of} from 'rxjs';
-import {FlowError} from "@ngx-addons/omni-auth-core";
+
 
 
 export class OmniAuthServiceMock implements OmniAuthService {
@@ -90,12 +90,12 @@ describe('isError', () => {
   });
 
   it('should return false when response is null', () => {
-    expect(isError(null as any)).toBe(false);
+    expect(isError(null as unknown)).toBe(false);
   });
 
   it('should return false when response is not an OmniAuthError instance', () => {
     const regularError = new Error('Regular error');
 
-    expect(isError(regularError as any)).toBe(false);
+    expect(isError(regularError as unknown)).toBe(false);
   });
 });

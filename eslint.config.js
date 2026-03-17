@@ -50,7 +50,7 @@ module.exports = tseslint.config(
       "@typescript-eslint/no-explicit-any": "warn",
       "@typescript-eslint/no-inferrable-types": "warn",
       "@typescript-eslint/no-shadow": "warn",
-      "@typescript-eslint/no-unused-vars": "warn",
+      "@typescript-eslint/no-unused-vars": ["warn", { "argsIgnorePattern": "^_" }],
 
       // JavaScript best practices
       eqeqeq: "error",
