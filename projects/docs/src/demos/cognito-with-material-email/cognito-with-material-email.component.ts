@@ -1,5 +1,5 @@
 import {ChangeDetectionStrategy, Component, computed, inject, input, OnInit, ViewEncapsulation,} from '@angular/core';
-import {AuthComponent, AuthComponentConfig,} from '@ngx-addons/omni-auth-ui-material';
+import {AuthComponent,} from '@ngx-addons/omni-auth-ui-material';
 import {NgDocThemeService} from '@ng-doc/app/services/theme';
 import {toSignal} from '@angular/core/rxjs-interop';
 import {MatIconRegistry} from '@angular/material/icon';

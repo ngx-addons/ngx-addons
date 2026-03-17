@@ -22,6 +22,7 @@ import {
   SocialButtonsComponent,
 } from '../social-buttons/social-buttons.component';
 import { PrintErrorComponent } from '../print-error/print-error.component';
+import { AUTH_UI_CONFIG, AuthUiConfig } from '../configure-auth-ui';
 
 export type SignInComponentConfig = {
   signInProviders?: SignInProvider[];
@@ -46,13 +47,16 @@ export class SignInComponent {
   #authService = inject(OmniAuthService);
   #authRoute = inject(AuthRouteService);
   #env = inject<AuthConfig>(AUTH_CONFIG);
+  #uiConfig = inject<AuthUiConfig>(AUTH_UI_CONFIG, { optional: true });
 
   readonly content =
     input.required<
       Pick<ContentConfig, 'signIn' | 'socialButtons' | 'common' | 'errors'>
     >();
 
-  readonly config = input<SignInComponentConfig>();
+  get config() {
+    return this.#uiConfig?.signIn;
+  }
 
   readonly processing = signal(false);
 

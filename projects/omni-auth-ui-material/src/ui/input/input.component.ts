@@ -61,11 +61,11 @@ export class InputComponent
     this.value = value;
   }
 
-  registerOnChange(fn: (_: any) => void): void {
+  registerOnChange(fn: (_: InputValue) => void): void {
     this.onChange = fn;
   }
 
-  registerOnTouched(fn: any): void {
+  registerOnTouched(fn: () => void): void {
     this.onTouched = fn;
   }
 

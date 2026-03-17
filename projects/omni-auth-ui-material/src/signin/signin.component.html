@@ -70,7 +70,7 @@
     </omni-auth-ui-mat-button>
   </div>
 
-  @if (config()?.signInProviders; as signInProviders) {
+  @if (config?.signInProviders; as signInProviders) {
     <div class="auth-form-social">
       <omni-auth-ui-mat-social-buttons
         [content]="content()"

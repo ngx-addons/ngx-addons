@@ -1,7 +1,7 @@
 {
   "name": "@ngx-addons/omni-auth-cognito",
   "author": "Piotr Liszka",
-  "version": "1.7.0",
+  "version": "1.7.1",
   "license": "MIT",
   "private": false,
   "keywords": [

@@ -2,8 +2,8 @@ import {ChangeDetectionStrategy, Component, inject, input} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {MatTabsModule} from '@angular/material/tabs';
 import {ConfirmSignUpComponent} from '../confirm-signup/confirm-signup.component';
-import {SignUpComponent, SignUpComponentConfig} from '../signup/signup.component';
-import {SignInComponent, SignInComponentConfig} from '../signin/signin.component';
+import {SignUpComponent} from '../signup/signup.component';
+import {SignInComponent} from '../signin/signin.component';
 import {ResetPasswordComponent} from '../reset-password/reset-password.component';
 import {
   AUTH_CONFIG,
@@ -20,15 +20,7 @@ import {ConfirmSigninComponent} from '../confirm-signin/confirm-signin.component
 import {
   AuthenticatedChangePasswordComponent
 } from '../authenticated-change-password/authenticated-change-password.component';
-
-export type AuthComponentConfig = {
-  /**
-   * Hide message when user is authenticated.
-   */
-  hideAuthenticatedContent?: boolean;
-  signUp?: SignUpComponentConfig,
-  signIn?: SignInComponentConfig;
-}
+import {AUTH_UI_CONFIG, AuthUiConfig} from '../configure-auth-ui';
 
 @Component({
   selector: 'omni-auth-ui-mat',
@@ -55,8 +47,7 @@ export class AuthComponent {
   authService = inject(OmniAuthService);
   authRouteService = inject(AuthRouteService);
   #env = inject(AUTH_CONFIG);
+  uiConfig = inject<AuthUiConfig>(AUTH_UI_CONFIG, { optional: true });
 
   readonly content = input<ContentConfig>(this.#env.identifierType === 'email' ? defaultContentEmail : defaultContentUsername);
-
-  readonly config = input<AuthComponentConfig>();
 }

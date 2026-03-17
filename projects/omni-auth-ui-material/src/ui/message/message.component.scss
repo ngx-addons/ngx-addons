@@ -30,8 +30,6 @@
 
       --mdc-linear-progress-active-indicator-color: var(--mat-sys-on-error-container);
       --mdc-linear-progress-track-color: rgba(255, 255, 255, 0.71);
-      --mat-icon-color: var(--mat-sys-on-error-container);
-
       .icon {
         color: var(--mat-sys-on-error-container);
       }
@@ -42,7 +40,6 @@
       background: var(--info-container);
 
       --mdc-linear-progress-active-indicator-color: var(--on-info);
-      --mat-icon-color: var(--on-info);
       --mdc-linear-progress-track-color: rgba(255, 255, 255, 0.71);
 
       .icon {

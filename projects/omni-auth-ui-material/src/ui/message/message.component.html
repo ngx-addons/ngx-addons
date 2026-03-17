@@ -1,6 +1,10 @@
 <div class="message-outer">
   <div class="message-inner" [ngClass]="type()">
-    <mat-icon class="icon">{{ icon() ?? iconBasedOnType }}</mat-icon>
+    @if (iconComponent) {
+      <ng-container *ngComponentOutlet="iconComponent; inputs: { icon: icon() ?? iconBasedOnType }"/>
+    } @else {
+      <span class="icon">{{ icon() ?? iconBasedOnType }}</span>
+    }
     <div class="message-content">
       <ng-content/>
     </div>

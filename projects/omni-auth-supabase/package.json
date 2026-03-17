@@ -1,7 +1,7 @@
 {
   "name": "@ngx-addons/omni-auth-supabase",
   "author": "Piotr Liszka",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "license": "MIT",
   "private": false,
   "keywords": [

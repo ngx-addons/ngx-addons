@@ -14,6 +14,7 @@ import {ButtonComponent} from '../ui/button/button.component';
 import {MatCheckbox} from '@angular/material/checkbox';
 import {PrintErrorComponent} from '../print-error/print-error.component';
 import {MapToNativeInputTypePipe} from '../ui/map-to-native-input-type.pipe';
+import {AUTH_UI_CONFIG, AuthUiConfig} from '../configure-auth-ui';
 
 export type AttributesContent = {
   label: string,
@@ -80,11 +81,15 @@ export type SignUpComponentConfig = {
 export class SignUpComponent {
   #authService = inject<OmniAuthService>(OmniAuthService);
   #env = inject<AuthConfig>(AUTH_CONFIG);
+  #uiConfig = inject<AuthUiConfig>(AUTH_UI_CONFIG, { optional: true });
   env = inject<AuthConfig>(AUTH_CONFIG);
   authRoute = inject(AuthRouteService);
   readonly processing = signal(false);
   readonly content = input.required<Pick<ContentConfig, 'signUp' | 'common' | 'errors'>>();
-  readonly config = input<SignUpComponentConfig>();
+
+  get config() {
+    return this.#uiConfig?.signUp;
+  }
   readonly termsAndConditions = output();
 
   #defaultIdentifierPattern = (this.#env.identifierType === 'email' ? patterns.emailPattern : patterns.usernamePattern);

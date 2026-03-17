@@ -1,3 +1,4 @@
+<!-- eslint-disable @angular-eslint/template/cyclomatic-complexity -->
 <form #registerForm="ngForm" class="auth-form" (ngSubmit)="onSubmit()">
   <div class="auth-form-body">
     <omni-auth-ui-mat-input
@@ -52,7 +53,7 @@
       }
     </omni-auth-ui-mat-input>
 
-    @for (attribute of config()?.attributes; track attribute.key) {
+    @for (attribute of config?.attributes; track attribute.key) {
       @switch (true) {
         @case (attribute.type === 'checkbox') {
           <div>
